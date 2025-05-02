@@ -318,8 +318,7 @@ class BETADCIUState extends MusicBeatState
 			vitor.animation.play('hover');
 			if (FlxG.mouse.justPressed)
 			{
-				MusicBeatState.switchState(new FreeplayState());
-				//MusicBeatState.switchState(new VitorState());
+				MusicBeatState.switchState(new VitorState());
 			}
 		}
 		else if (!FlxG.mouse.overlaps(vitor))
