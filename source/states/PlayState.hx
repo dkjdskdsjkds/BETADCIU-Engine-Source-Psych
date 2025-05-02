@@ -180,6 +180,7 @@ class PlayState extends MusicBeatState
 	public static var isBETADCIU:Bool = false;
 	public static var isBonus:Bool = false;
 	public static var isNeonight:Bool = false;
+	public static var isVitor:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
@@ -399,7 +400,7 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode)
 			detailsText = "Story Mode: " + WeekData.getCurrentWeek().weekName;
-		else if (isBETADCIU)
+		else if (isBETADCIU || isNeonight || isVitor)
 			detailsText =  SONG.song + " But Every Turn A Different Cover is Used";
 		else if (isBonus)
 			detailsText = "Bonus Songs";
@@ -1521,7 +1522,7 @@ class PlayState extends MusicBeatState
 		#if DISCORD_ALLOWED
 		// Updating Discord Rich Presence (with Time Left)
 		if(autoUpdateRPC) 
-			if (isBETADCIU) {
+			if (isBETADCIU || isNeonight || isVitor) {
 				DiscordClient.changePresence(detailsText, " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
 			} else {
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength);
@@ -1939,13 +1940,13 @@ class PlayState extends MusicBeatState
 		if(!autoUpdateRPC) return;
 
 		if (showTime)
-			if (isBETADCIU) {
+			if (isBETADCIU || isNeonight || isVitor) {
 				DiscordClient.changePresence(detailsText, " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			} else {
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.data.noteOffset);
 			}
 		else
-			if (isBETADCIU) {
+			if (isBETADCIU || isNeonight || isVitor) {
 				DiscordClient.changePresence(detailsText, " (" + storyDifficultyText + ")", iconP2.getCharacter());
 			} else {
 				DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
@@ -2288,7 +2289,7 @@ class PlayState extends MusicBeatState
 
 		#if DISCORD_ALLOWED
 		if(autoUpdateRPC) 
-			if (isBETADCIU) {
+			if (isBETADCIU || isNeonight || isVitor) {
 				DiscordClient.changePresence(detailsPausedText, " (" + storyDifficultyText + ")", iconP2.getCharacter());
 			} else {
 				DiscordClient.changePresence(detailsPausedText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
@@ -2851,6 +2852,8 @@ class PlayState extends MusicBeatState
 					MusicBeatState.switchState(new states.betadciu.BonusSongsState());
 				else if (isNeonight)
 					MusicBeatState.switchState(new states.betadciu.NeonightState());
+				else if (isVitor)
+					MusicBeatState.switchState(new states.betadciu.VitorState());
 				else
 					MusicBeatState.switchState(new FreeplayState());
 				// FlxG.sound.playMusic(Paths.music('freakyMenu'));

@@ -143,6 +143,7 @@ class WeekData {
 
 		switch(menuNo)
  		{
+			case 0: disabledMods.push('BETADCIU');//freeplay. continue checking but skip all BETADCIU stuff.
  			case 1 | 2 | 3 | 4 | 5:
  			{
  				var suf:String = "";
@@ -152,7 +153,7 @@ class WeekData {
  					case 1: suf = '-betadciu'; //BETADCIU menu.
  					case 2: suf = '-bonus';    //Bonus Songs Menu
 					case 3: suf = '-neonight'; //Neonight Menu
-					//case 4: suf = '-vitor'; //Vitor Menu
+					case 4: suf = '-vitor'; //Vitor Menu
 					case 5: suf = '-guest'; //Other BETADCIU creators menu.
  				}
  				

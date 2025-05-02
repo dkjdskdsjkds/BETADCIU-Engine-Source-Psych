@@ -334,6 +334,8 @@ class PauseSubState extends MusicBeatSubstate
 						MusicBeatState.switchState(new states.betadciu.BonusSongsState());
 					} else if (PlayState.isNeonight) {
 						MusicBeatState.switchState(new states.betadciu.NeonightState());
+					} else if (PlayState.isVitor) {
+						MusicBeatState.switchState(new states.betadciu.VitorState());
 					} else {
 						MusicBeatState.switchState(new states.FreeplayState());
 					}		
