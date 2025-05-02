@@ -275,6 +275,8 @@ class Paths
 
 		if (PlayState.isNeonight)
 			suf = 'NN';
+		if (PlayState.isVitor)		
+			suf = 'V';
 		if (PlayState.isBETADCIU && Difficulty.list[0] == "Guest")		
 			suf = 'Guest';
 
@@ -288,6 +290,8 @@ class Paths
 
 		if (PlayState.isNeonight)
 			suf = 'NN';
+		if (PlayState.isVitor)		
+			suf = 'V';
 		if (PlayState.isBETADCIU && Difficulty.list[0] == "Guest")		
 			suf = 'Guest';
 
